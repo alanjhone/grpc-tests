@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package grpc;
+
+message Empty {}
+
+message Response {
+    string message = 1; 
+}
+
+message NameResponse {
+    repeated Response response = 1; 
+}
+
+message Request {
+    string name = 1;
+    string lastName = 2; 
+}
+
+service EchoService {
+
+    rpc GetMessage (stream Request) returns (Response);
+    rpc EchoStream (stream Request) returns (stream NameResponse);
+    
+}

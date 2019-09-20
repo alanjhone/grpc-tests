@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package grpc;
+
+message Empty {}
+
+message HelloRequest {
+  string message = 1;
+}
+
+message HelloResponse {
+  string message = 1;
+}
+
+service HelloService {
+
+	rpc RequestStream (Empty) returns (stream HelloRequest);
+
+	rpc SayHello (HelloRequest) returns (HelloResponse);
+
+	rpc LotsOfResponses(HelloRequest) returns (stream HelloResponse);
+
+	rpc LotsOfMessages(stream HelloRequest) returns (HelloResponse);
+
+	rpc BidiHello(stream HelloRequest) returns (stream HelloResponse);
+
+}
