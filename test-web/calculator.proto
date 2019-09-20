@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+message Number {
+	float value = 1;
+}
+
+message Number2 {
+	float x = 1;
+	float y = 2;
+	float value = 3;
+}
+
+message Message {
+	string msg = 1;
+}
+
+service Calculator {
+	rpc SquareRoot(Number) returns (Number) {}
+
+	rpc Sum(Number2) returns (Number2) {}
+
+	rpc HelloWorld(Message) returns (Message) {}
+}
